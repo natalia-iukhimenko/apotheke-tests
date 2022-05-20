@@ -1,0 +1,23 @@
+{
+  "name": "apotheke-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natalia-iukhimenko/apotheke-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natalia-iukhimenko/apotheke-tests/issues"
+  },
+  "homepage": "https://github.com/natalia-iukhimenko/apotheke-tests#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^9.6.1"
+  }
+}
