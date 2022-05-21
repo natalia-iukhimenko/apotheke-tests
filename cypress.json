@@ -1,1 +1,4 @@
-{}
+{
+  "baseUrl": "https://api.sa-tech.de",
+  "integrationFolder": "cypress/tests"
+}
