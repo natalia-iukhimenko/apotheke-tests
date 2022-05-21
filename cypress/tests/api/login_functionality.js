@@ -21,21 +21,13 @@ describe("API tests", () => {
 
     it("Can't login with valid tenant but other credentials", () => {
         cy.executeLoginCall(valid[0].tenant, valid[2].body, false)
-            .then(response => {
-                expect(response.status).to.equal(400);
-                expect(response.body.error).to.equal("Bad Request");
-                expect(response.body.message).to.equal("customer-authentication.error.customer.not-found");
-            })
+            .then(validateBadRequest)
     })
 
     it("Can't login with invalid tenant", () => {
         invalid.forEach(obj => {
             cy.executeLoginCall(obj.tenant, obj.body, false)
-                .then(response => {
-                    expect(response.status).to.equal(400);
-                    expect(response.body.error).to.equal("Bad Request");
-                    expect(response.body.message).to.equal("customer-authentication.error.customer.not-found");
-                })
+                .then(validateBadRequest)
         })
     })
 
@@ -43,11 +35,7 @@ describe("API tests", () => {
         let testObj = structuredClone(valid[1]);
         testObj.body.customerNumber = Date.now();
         cy.executeLoginCall(testObj.tenant, testObj.body, false)
-            .then(response => {
-                expect(response.status).to.equal(400);
-                expect(response.body.error).to.equal("Bad Request");
-                expect(response.body.message).to.equal("customer-authentication.error.customer.not-found");
-            })
+            .then(validateBadRequest)
     })
 
     it("Can't login with existing customerNumber and wrong password", () => {
@@ -60,4 +48,12 @@ describe("API tests", () => {
                 expect(response.body.message).to.equal("customer-authentication.error.wrong.username.or.password");
             })
     })
+
+    const validateBadRequest = (response) => {
+        const expectedStatusCode = 400;
+        expect(response.status).to.equal(expectedStatusCode);
+        expect(response.body.statusCode).to.equal(expectedStatusCode);
+        expect(response.body.error).to.equal("Bad Request");
+        expect(response.body.message).to.equal("customer-authentication.error.customer.not-found");
+    }
 })
