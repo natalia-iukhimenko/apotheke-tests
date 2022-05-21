@@ -32,14 +32,14 @@ describe("API tests", () => {
     })
 
     it("Can't login with non-existing customerNumber", () => {
-        let testObj = structuredClone(valid[1]);
+        let testObj = JSON.parse(JSON.stringify(valid[1]));
         testObj.body.customerNumber = Date.now();
         cy.executeLoginCall(testObj.tenant, testObj.body, false)
             .then(validateBadRequest)
     })
 
     it("Can't login with existing customerNumber and wrong password", () => {
-        let testObj = structuredClone(valid[0]);
+        let testObj = JSON.parse(JSON.stringify(valid[0]));
         testObj.body.password = Date.now();
         cy.executeLoginCall(testObj.tenant, testObj.body, false)
             .then(response => {
