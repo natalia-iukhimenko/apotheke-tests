@@ -1,0 +1,62 @@
+{
+  "valid": [
+    {
+      "tenant": "at",
+      "body": {
+        "customerNumber": "19082876",
+        "password": "232400"
+      }
+    },
+    {
+      "tenant": "com",
+      "body": {
+        "customerNumber": "19082876",
+        "password": "232400"
+      }
+    },
+    {
+      "tenant": "ch",
+      "body": {
+        "customerNumber": "190829879",
+        "password": "ch123456"
+      }
+    },
+    {
+      "tenant": "fr",
+      "body": {
+        "customerNumber": "190829880",
+        "password": "fr123456"
+      }
+    },
+    {
+      "tenant": "es",
+      "body": {
+        "customerNumber": "190829881",
+        "password": "es123456"
+      }
+    },
+    {
+      "tenant": "it",
+      "body": {
+        "customerNumber": "190829882",
+        "password": "it123456"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "tenant": "ru",
+      "body": {
+        "customerNumber": "190829882",
+        "password": "it123456"
+      }
+    },
+    {
+      "tenant": null,
+      "body": {
+        "customerNumber": "190829882",
+        "password": "it123456"
+      }
+    }
+  ]
+}
